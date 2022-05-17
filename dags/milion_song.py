@@ -49,7 +49,7 @@ with DAG(
                     sql='sql_scripts/create_table/target_tables.sql'
                 )
 
-    with TaskGroup('ingestion_processes') as ingest:
+    with TaskGroup('ingesting') as ingest:
         staging_songs = PostgresOperator(
                     task_id='load_stage_songs',
                     postgres_conn_id='postgres_conn',
@@ -62,7 +62,7 @@ with DAG(
                     sql='sql_scripts/staging/log_insert.sql'
                 )
 
-    with TaskGroup('transformation_processes') as transform:
+    with TaskGroup('transforming') as transform:
         songplays_table = PostgresOperator(
                     task_id='songplays_table',
                     postgres_conn_id='postgres_conn',

@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS public.artists (
 );
 
 CREATE TABLE IF NOT EXISTS public.songplays (
-	playid varchar(32) NOT NULL,
-	start_time timestamp NOT NULL,
-	userid int4 NOT NULL,
+	playid SERIAL,
+	start_time timestamp NULL,
+	userid int4 NULL,
 	"level" varchar(256),
 	songid varchar(256),
 	artistid varchar(256),
@@ -29,22 +29,20 @@ CREATE TABLE IF NOT EXISTS public.songs (
 );
 
 CREATE TABLE IF NOT EXISTS public."time" (
-	start_time timestamp NOT NULL,
+	start_time timestamp NULL,
 	"hour" int4,
 	"day" int4,
 	week int4,
 	"month" varchar(256),
 	"year" int4,
-	weekday varchar(256),
-	CONSTRAINT time_pkey PRIMARY KEY (start_time)
+	weekday varchar(256)
 );
 
 CREATE TABLE IF NOT EXISTS public.users (
-	userid int4 NOT NULL,
+	userid int4 NULL,
 	first_name varchar(256),
 	last_name varchar(256),
 	gender varchar(256),
-	"level" varchar(256),
-	CONSTRAINT users_pkey PRIMARY KEY (userid)
+	"level" varchar(256)
 );
 
